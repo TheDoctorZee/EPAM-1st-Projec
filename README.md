@@ -8,7 +8,7 @@ To configure Tomcat for its first use, start by opening the file conf/tomcat-use
 your favorite text editor. Place the following tag between the <tomcat-users>
 </tomcat-users> XML tags:
 
-</user username="admin" password="admin" roles="manager-gui,admin-gui" />
+<user username="admin" password="admin" roles="manager-gui,admin-gui" />
 
 
 Open the conf/web.xml file. Search the file for the text org.apache.jasper.servlet
@@ -16,7 +16,7 @@ Open the conf/web.xml file. Search the file for the text org.apache.jasper.servl
 learn about Servlet init parameters in the next chapter, but for now add the following init
 parameters below the existing init parameters:
 
-//<init-param>
+<init-param>
 <param-name>compilerSourceVM</param-name>
 <param-value>1.8</param-value>
 </init-param>
