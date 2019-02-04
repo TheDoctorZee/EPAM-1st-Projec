@@ -28,8 +28,6 @@ parameters below the existing init parameters:
 
 Add Tomcat as a local application server by providing path to your Tomcat directory in Settings -> Applications Servers
 
-
-
 To add tomcat to your project click the run/debug configurations icon (a down arrow) on the toolbar, then click Edit Configurations.
 
 Add local Tomcat server, add exploded artifact in deployment tab.
