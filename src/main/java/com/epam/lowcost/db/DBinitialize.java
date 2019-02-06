@@ -15,7 +15,6 @@ public class DBinitialize {
     private Statement stm;
 
     public DBinitialize(BasicDataSource basicDataSource) throws SQLException {
-
         this.basicDataSource = basicDataSource;
         conn = basicDataSource.getConnection();
         stm = conn.createStatement();
