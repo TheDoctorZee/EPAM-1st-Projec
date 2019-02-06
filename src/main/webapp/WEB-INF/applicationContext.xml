@@ -11,7 +11,7 @@
 
     <bean id="idDataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="org.h2.Driver"/>
-        <property name="url" value="jdbc:h2:mem:/test;DB_CLOSE_DELAY=-1"/>
+        <property name="url" value="jdbc:h2:mem:/testDB_CLOSE_DELAY=-1"/>
         <property name="username" value="ca"/>
         <property name="password" value=""/>
     </bean>
