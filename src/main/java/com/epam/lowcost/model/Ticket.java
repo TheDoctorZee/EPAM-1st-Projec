@@ -2,8 +2,6 @@ package com.epam.lowcost.model;
 
 import lombok.*;
 
-import java.util.Date;
-
 @Data
 @ToString
 @NoArgsConstructor

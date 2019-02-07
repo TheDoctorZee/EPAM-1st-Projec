@@ -2,7 +2,7 @@ package com.epam.lowcost.model;
 
 import lombok.*;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Data
 @ToString
@@ -11,6 +11,6 @@ import java.util.Date;
 public class Flight {
     private long id;
     private long initiatedPrice;
-    private Date departureDate;
-    private Date arrivalDate;
+    private LocalDateTime departureDate;
+    private LocalDateTime arrivalDate;
 }
