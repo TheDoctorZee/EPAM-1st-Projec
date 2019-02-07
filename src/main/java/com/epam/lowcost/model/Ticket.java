@@ -5,7 +5,7 @@ import lombok.*;
 import java.util.Date;
 
 @Data
-@ToString (exclude = {"id"})
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 public class Ticket {
@@ -14,8 +14,6 @@ public class Ticket {
     private Flight flight;
     private boolean isBusiness;
     private boolean hasLuggage;
-    private boolean placeChoice;
-    private Date departureDate;
-    private Date arrivalDate;
+    private boolean placePriority;
     private long price;
 }

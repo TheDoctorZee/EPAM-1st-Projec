@@ -3,12 +3,12 @@ package com.epam.lowcost.model;
 import lombok.*;
 
 @Data
-@ToString (exclude = {"id"})
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 public class Plane {
     private long id;
     private String model;
-    private int businessPlaces;
-    private int economPlaces;
+    private int businessPlacesNumber;
+    private int economPlacesNumber;
 }
