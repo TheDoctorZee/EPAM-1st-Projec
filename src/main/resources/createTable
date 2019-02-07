@@ -1,10 +1,16 @@
---creating tables
+--creating table
 CREATE TABLE REGISTRATION(id INTEGER not NULL,first VARCHAR(255),last VARCHAR(255),age INTEGER,PRIMARY KEY (id));
-
---populating tables
+--populating table
 INSERT INTO Registration VALUES (100, 'Zara', 'Ali', 18);
 INSERT INTO Registration VALUES (101, 'Mahnaz', 'Fatma', 25);
 INSERT INTO Registration VALUES (102, 'Zaid', 'Khan', 30);
 INSERT INTO Registration VALUES (103, 'Sumit', 'Mittal', 28);
 
---selecting to output for test
+
+--creating table
+CREATE TABLE EMPLOYEES(id INTEGER not NULL,first VARCHAR(255),last VARCHAR(255),age INTEGER,PRIMARY KEY (id));
+--populating table
+INSERT INTO EMPLOYEES VALUES (100, 'Zara', 'Ali', 18);
+INSERT INTO EMPLOYEES VALUES (101, 'Mahnaz', 'Fatma', 25);
+INSERT INTO EMPLOYEES VALUES (102, 'Zaid', 'Khan', 30);
+INSERT INTO EMPLOYEES VALUES (103, 'Sumit', 'Mittal', 28);
