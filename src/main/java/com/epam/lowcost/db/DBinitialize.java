@@ -28,16 +28,18 @@ public class DBinitialize {
     private void initiateDB() throws SQLException {
 
         File fl = new File(this.getClass().getResource("/createTable").getFile());
-        try (BufferedReader br = Files.newBufferedReader(fl.toPath())) {
-
-            String sql = br.readLine();
-            while (sql != null) {
-                stm.addBatch(sql);
-                sql = br.readLine();
+         try(Stream<String> str = Files.lines(fl.toPath()))
+            {
+                str.forEach(s -> {  
+                    try{
+                    stm.addBatch(s);}
+                    catch (SQLException e){
+                        throw new RuntimeException(e + "SQL Exception occurred");
+                    }
+                });
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         stm.executeBatch();
     }
 
