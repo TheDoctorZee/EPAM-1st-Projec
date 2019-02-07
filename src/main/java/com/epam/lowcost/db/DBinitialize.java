@@ -26,20 +26,17 @@ public class DBinitialize {
 
 
     private void initiateDB() throws SQLException {
-
         File fl = new File(this.getClass().getResource("/createTable").getFile());
-         try(Stream<String> str = Files.lines(fl.toPath()))
-            {
-                str.forEach(s -> {  
-                    try{
-                    stm.addBatch(s);}
-                    catch (SQLException e){
-                        throw new RuntimeException(e + "SQL Exception occurred");
-                    }
-                });
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        List<String> sqlBatch = new ArrayList<>();
+        try (Stream<String> str = Files.lines(fl.toPath())) {
+            str.forEach(sqlBatch::add);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        for (String s : sqlBatch) {
+            stm.addBatch(s);
+        }
+
         stm.executeBatch();
     }
 
