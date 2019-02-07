@@ -17,11 +17,25 @@ public class DBinitialize {
     private Statement stm;
 
     public DBinitialize(BasicDataSource basicDataSource) throws SQLException {
-
-        conn = basicDataSource.getConnection();
-        stm = conn.createStatement();
-        initiateDB();
-        printAllDb();
+        try {
+            conn = basicDataSource.getConnection();
+            stm = conn.createStatement();
+            initiateDB();
+            printAllDb();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+                if (stm != null) {
+                    stm.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 
