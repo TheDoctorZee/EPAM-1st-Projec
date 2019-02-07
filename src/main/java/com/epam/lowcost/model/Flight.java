@@ -2,7 +2,6 @@ package com.epam.lowcost.model;
 
 import lombok.*;
 
-import java.math.BigInteger;
 import java.util.Date;
 
 @Data
@@ -11,7 +10,7 @@ import java.util.Date;
 @AllArgsConstructor
 public class Flight {
     private long id;
-    private BigInteger initiatedPrice;
+    private long initiatedPrice;
     private Date departureDate;
     private Date arrivalDate;
 }
