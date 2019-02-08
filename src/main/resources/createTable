@@ -1,16 +1,23 @@
 --creating table
-CREATE TABLE REGISTRATION(id INTEGER not NULL,first VARCHAR(255),last VARCHAR(255),age INTEGER,PRIMARY KEY (id));
---populating table
-INSERT INTO Registration VALUES (100, 'Zara', 'Ali', 18);
-INSERT INTO Registration VALUES (101, 'Mahnaz', 'Fatma', 25);
-INSERT INTO Registration VALUES (102, 'Zaid', 'Khan', 30);
-INSERT INTO Registration VALUES (103, 'Sumit', 'Mittal', 28);
+CREATE TABLE USERS(id LONG AUTO_INCREMENT NOT NULL, email VARCHAR(255), password VARCHAR(255), isAdmin BOOL,firstName VARCHAR(255), lastName VARCHAR(255), documentInfo VARCHAR(255), birthday DATE, PRIMARY KEY (id));
+INSERT INTO USERS (email, password, isAdmin, firstName, lastName, documentInfo, birthday) VALUES ('ExampleEmail1@google.com', 'examplePassword1',false,'Thomas1','Testyman1','№1234 bestpassport ever','2000-06-05');
+INSERT INTO USERS (email, password, isAdmin, firstName, lastName, documentInfo, birthday) VALUES ('ExampleEmail2@google.com', 'examplePassword2',false,'Thomas2','Testyman2','№1234 bestpassport ever','2000-06-05');
+INSERT INTO USERS (email, password, isAdmin, firstName, lastName, documentInfo, birthday) VALUES ('ExampleEmail3@google.com', 'examplePassword3',false,'Thomas3','Testyman3','№1234 bestpassport ever','2000-06-05');
+INSERT INTO USERS (email, password, isAdmin, firstName, lastName, documentInfo, birthday) VALUES ('ExampleEmail4@google.com', 'examplePassword4',false,'Thomas4','Testyman4','№1234 bestpassport ever','2000-06-05');
 
 
---creating table
-CREATE TABLE EMPLOYEES(id INTEGER not NULL,first VARCHAR(255),last VARCHAR(255),age INTEGER,PRIMARY KEY (id));
---populating table
-INSERT INTO EMPLOYEES VALUES (100, 'Zara', 'Ali', 18);
-INSERT INTO EMPLOYEES VALUES (101, 'Mahnaz', 'Fatma', 25);
-INSERT INTO EMPLOYEES VALUES (102, 'Zaid', 'Khan', 30);
-INSERT INTO EMPLOYEES VALUES (103, 'Sumit', 'Mittal', 28);
+-- private int id;
+-- private String email;
+-- private String password;
+-- private boolean isAdmin;
+-- private String firstName;
+-- private String lastName;
+-- private String documentInfo;
+-- private Data birthday;
+
+-- --creating table
+CREATE TABLE EMPLOYEES(id INTEGER AUTO_INCREMENT not NULL,first VARCHAR(255),last VARCHAR(255),age INTEGER,PRIMARY KEY (id));
+INSERT INTO EMPLOYEES(first, last, age) VALUES ('Zara', 'Ali', 18);
+INSERT INTO EMPLOYEES(first, last, age) VALUES ('Mahnaz', 'Fatma', 25);
+INSERT INTO EMPLOYEES(first, last, age) VALUES ('Zaid', 'Khan', 30);
+INSERT INTO EMPLOYEES(first, last, age) VALUES ('Sumit', 'Mittal', 28);

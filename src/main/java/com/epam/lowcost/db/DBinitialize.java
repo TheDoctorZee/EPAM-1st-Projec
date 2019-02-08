@@ -1,6 +1,8 @@
 package com.epam.lowcost.db;
 
 
+import lombok.Cleanup;
+import lombok.Data;
 import org.apache.commons.dbcp2.BasicDataSource;
 
 import java.io.BufferedReader;
@@ -10,40 +12,62 @@ import java.nio.file.Files;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class DBinitialize {
-
+    BasicDataSource basicDataSource;
     private Connection conn;
     private Statement stm;
 
-    public DBinitialize(BasicDataSource basicDataSource) throws SQLException {
-
-        conn = basicDataSource.getConnection();
-        stm = conn.createStatement();
+    public DBinitialize(BasicDataSource basicDataSource) {
+        this.basicDataSource = basicDataSource;
         initiateDB();
         printAllDb();
+
     }
 
 
-    private void initiateDB() throws SQLException {
-
+    private void initiateDB() {
         File fl = new File(this.getClass().getResource("/createTable").getFile());
-        try (BufferedReader br = Files.newBufferedReader(fl.toPath())) {
-
-            String sql = br.readLine();
-            while (sql != null) {
-                stm.addBatch(sql);
-                sql = br.readLine();
+        List<String> sqlBatch = new ArrayList<>();
+        try {
+             conn = basicDataSource.getConnection();
+            stm = conn.createStatement();
+            try (Stream<String> str = Files.lines(fl.toPath())) {
+                str.forEach(sqlBatch::add);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        } catch (IOException e) {
+            try {
+                for (String s : sqlBatch) {
+                    stm.addBatch(s);
+                }
+                stm.executeBatch();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+                if (stm != null) {
+                    stm.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
-        stm.executeBatch();
     }
 
     private void printAllDb() {
         List<String> tables = new ArrayList<>();
         try {
+            conn = basicDataSource.getConnection();
+            stm = conn.createStatement();
+
             DatabaseMetaData dm = conn.getMetaData();
             ResultSet rs = dm.getTables(null, null, "%", null);
             while (rs.next()) {
@@ -60,7 +84,7 @@ public class DBinitialize {
 
                 while (rs.next()) {
                     for (int i = 1; i < columns; i++) {
-                        System.out.print(" " + rs.getMetaData().getColumnName(i) + "=" + rs.getObject(i));
+                        System.out.print(" " + rs.getMetaData().getColumnName(i) + " = " + rs.getObject(i));
                     }
                     System.out.println();
                 }
@@ -68,6 +92,17 @@ public class DBinitialize {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                if (conn != null) {
+                    conn.close();
+                }
+                if (stm != null) {
+                    stm.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
 
     }
