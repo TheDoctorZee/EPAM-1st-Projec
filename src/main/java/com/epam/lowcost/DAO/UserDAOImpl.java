@@ -1,25 +1,25 @@
 package com.epam.lowcost.DAO;
 
 import com.epam.lowcost.model.User;
-import org.apache.commons.dbcp2.BasicDataSource;
-
+import javax.sql.DataSource;
 import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserDAOImpl implements UserDAO {
 
-    private BasicDataSource basicDataSource;
+    private DataSource dataSource;
 
-    public UserDAOImpl(BasicDataSource basicDataSource) {
-        this.basicDataSource = basicDataSource;
+    public UserDAOImpl(DataSource dataSource) {
+        this.dataSource = dataSource;
     }
 
     @Override
     public List<User> getAllUsers() {
         List<User> allUsers = new ArrayList<>();
         User user;
-        try (Connection conn = basicDataSource.getConnection();
+        try (Connection conn = dataSource.getConnection();
              Statement stm = conn.createStatement();
              ResultSet rs = stm.executeQuery("SELECT * FROM USERS")) {
             while (rs.next()) {
@@ -31,7 +31,7 @@ public class UserDAOImpl implements UserDAO {
                 String firstName = rs.getString("firstName");
                 String lastName = rs.getString("lastName");
                 String documentInfo = rs.getString("documentInfo");
-                Date birthday = rs.getDate("birthday");
+                LocalDateTime birthday = rs.getTimestamp("birthday").toLocalDateTime();
 
                 user = new User(id, email, password, isAdmin, firstName, lastName, documentInfo, birthday);
 

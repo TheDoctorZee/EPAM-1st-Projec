@@ -13,9 +13,8 @@
 
     <context:component-scan base-package="com.epam.lowcost.controller"/>
 
-    <bean id="db" class="com.epam.lowcost.db.DBinitialize">
+    <bean id="dBinitialize" class="com.epam.lowcost.db.DBinitialize">
         <constructor-arg ref="idDataSource"/>
-        <constructor-arg ref="userService"/>
     </bean>
 
     <bean id="userDAO" class="com.epam.lowcost.DAO.UserDAOImpl">
@@ -25,10 +24,9 @@
         <constructor-arg ref="userDAO"/>
     </bean>
 
-    <bean id="idDataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
-        <property name="driverClassName" value="org.h2.Driver"/>
-        <property name="url" value="jdbc:h2:mem:/test;DB_CLOSE_DELAY=-1"/>
-        <property name="username" value="ca"/>
+    <bean id="idDataSource" class="org.h2.jdbcx.JdbcDataSource">
+        <property name="URL" value="jdbc:h2:mem:/test;DB_CLOSE_DELAY=-1"/>
+        <property name="user" value="ca"/>
         <property name="password" value=""/>
     </bean>
 
