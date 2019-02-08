@@ -5,7 +5,6 @@ import lombok.*;
 import java.time.LocalDateTime;
 
 @Data
-@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 public class Flight {

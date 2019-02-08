@@ -2,10 +2,9 @@ package com.epam.lowcost.model;
 
 import lombok.*;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Data
-@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
@@ -16,5 +15,5 @@ public class User {
     private String firstName;
     private String lastName;
     private String documentInfo;
-    private Date birthday;
+    private LocalDateTime birthday;
 }

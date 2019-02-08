@@ -3,7 +3,6 @@ package com.epam.lowcost.model;
 import lombok.*;
 
 @Data
-@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 public class Plane {
