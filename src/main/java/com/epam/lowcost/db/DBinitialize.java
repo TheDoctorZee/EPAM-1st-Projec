@@ -20,13 +20,18 @@ public class DBinitialize {
     private Statement stm;
 
 
-    public DBinitialize(BasicDataSource basicDataSource, UserServiceImpl userService) {
+
+    public DBinitialize(BasicDataSource basicDataSource) {
+
+
         this.basicDataSource = basicDataSource;
         initiateDB();
     }
 
 
-    private void initiateDB(){
+
+     private void initiateDB() {
+
         File fl = new File(this.getClass().getResource("/createTable").getFile());
         List<String> sqlBatch = new ArrayList<>();
         try {
@@ -60,7 +65,6 @@ public class DBinitialize {
             }
         }
     }
-
 }
 
 

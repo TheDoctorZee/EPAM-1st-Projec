@@ -1,15 +1,14 @@
 package com.epam.lowcost.model;
-import lombok.*;
-import java.util.Date;
 
+
+import lombok.*;
+
+import java.time.LocalDateTime;
 
 @Data
-@ToString
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class User {
-
     private long id;
     private String email;
     private String password;
@@ -17,6 +16,6 @@ public class User {
     private String firstName;
     private String lastName;
     private String documentInfo;
-    private Date birthday;
-
+    private LocalDateTime birthday;
 }
+
