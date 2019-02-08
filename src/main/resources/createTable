@@ -16,8 +16,8 @@ INSERT INTO USERS (email, password, isAdmin, firstName, lastName, documentInfo, 
 -- private Data birthday;
 
 -- --creating table
-CREATE TABLE EMPLOYEES(id INTEGER AUTO_INCREMENT not NULL,first VARCHAR(255),last VARCHAR(255),age INTEGER,PRIMARY KEY (id));
-INSERT INTO EMPLOYEES(first, last, age) VALUES ('Zara', 'Ali', 18);
-INSERT INTO EMPLOYEES(first, last, age) VALUES ('Mahnaz', 'Fatma', 25);
-INSERT INTO EMPLOYEES(first, last, age) VALUES ('Zaid', 'Khan', 30);
-INSERT INTO EMPLOYEES(first, last, age) VALUES ('Sumit', 'Mittal', 28);
+CREATE TABLE EMPLOYEES(id LONG AUTO_INCREMENT not NULL,first VARCHAR(255),last VARCHAR(255),PRIMARY KEY (id));
+INSERT INTO EMPLOYEES(first, last) VALUES ('Zara', 'Ali');
+INSERT INTO EMPLOYEES(first, last) VALUES ('Mahnaz', 'Fatma');
+INSERT INTO EMPLOYEES(first, last) VALUES ('Zaid', 'Khan');
+INSERT INTO EMPLOYEES(first, last) VALUES ('Sumit', 'Mittal');
