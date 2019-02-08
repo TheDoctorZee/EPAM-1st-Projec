@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController
+@RestController("/user")
 public class UserController {
 
     @Autowired
     UserServiceImpl userService;
 
-    @GetMapping(value = "/list")
+    @GetMapping(value = "/listAllUsers")
     public List<User> listAllUsers(){
         return userService.getAllUsers();
     }
