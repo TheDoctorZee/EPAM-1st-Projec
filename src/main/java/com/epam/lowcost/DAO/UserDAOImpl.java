@@ -21,25 +21,26 @@ public class UserDAOImpl implements UserDAO {
         User user;
         try (Connection conn = basicDataSource.getConnection();
              Statement stm = conn.createStatement();
-             ResultSet rs = stm.executeQuery("SELECT * FROM EMPLOYEES")) {
-
-
+             ResultSet rs = stm.executeQuery("SELECT * FROM USERS")) {
             while (rs.next()) {
-                Long id = rs.getLong("id");
-                String first = rs.getString("first");
-                String last = rs.getString("last");
-                System.out.println("we got =  " + id + first + last);
-                user = new User(id, first, last);
-                System.out.println(user);
-                allUsers.add(user);
 
+                long id = rs.getLong("id");
+                String email = rs.getString("email");
+                String password = rs.getString("password");
+                boolean isAdmin = rs.getBoolean("isAdmin");
+                String firstName = rs.getString("firstName");
+                String lastName = rs.getString("lastName");
+                String documentInfo = rs.getString("documentInfo");
+                Date birthday = rs.getDate("birthday");
+
+                user = new User(id, email, password, isAdmin, firstName, lastName, documentInfo, birthday);
+
+                allUsers.add(user);
             }
-            System.out.println();
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return allUsers;
     }
 }
