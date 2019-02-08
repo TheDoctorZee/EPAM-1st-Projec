@@ -20,7 +20,7 @@ public class DBinitialize {
     private Statement stm;
 
 
-    public DBinitialize(BasicDataSource basicDataSource, UserServiceImpl userService) {
+    public DBinitialize(BasicDataSource basicDataSource) {
         this.basicDataSource = basicDataSource;
         initiateDB();
     }
