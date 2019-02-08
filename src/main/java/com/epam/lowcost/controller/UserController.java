@@ -15,7 +15,7 @@ public class UserController {
     UserServiceImpl userService;
 
     @GetMapping(value = "/list")
-    public List<User> greeting(){
+    public List<User> listAllUsers(){
         return userService.getAllUsers();
     }
 }
